@@ -1,0 +1,9 @@
+FROM ubuntu
+COPY . .
+RUN ls -a
+RUN yum install git
+RUN yum install jenkins
+RUN systemctl start jenkins
+CMD systemctl status docker
+CMD systemctl status jenkins
+USER rahul
