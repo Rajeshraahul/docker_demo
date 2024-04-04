@@ -1,9 +1,8 @@
-FROM ubuntu
+# syntax=docker/dockerfile:1
+
+FROM node:18-alpine
+WORKDIR /app
 COPY . .
-RUN ls -a
-RUN yum install git
-RUN yum install jenkins
-RUN systemctl start jenkins
-CMD systemctl status docker
-CMD systemctl status jenkins
-USER rahul
+RUN yarn install --production
+CMD ["node", "src/index.js"]
+EXPOSE 3000
